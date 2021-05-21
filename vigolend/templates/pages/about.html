@@ -1,68 +1,10 @@
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="shortcut icon" href="assets/images/favicon.png">
-        <title>About | P2P</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/os-lib.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
- 
-  </head>
-<body>
+{% load static %}
 
-<header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="logo"><img src="assets/images/logo.svg" alt=""></div>
-                </div>
+{% block content %}
 
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="drplst">
-                        <ul>
-                            <li><a href="javascript:;">Borrow</a>
-                                <ul>
-                                    <li><a href="javascript:;">how it work</a></li>
-                                    <li><a href="javascript:;">loan types</a></li>
-                                    <li><a href="javascript:;">check your rate</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:;">Invest
-
-                                <ul>
-                                    <li><a href="javascript:;">how it work</a></li>
-                                    <li><a href="javascript:;">benefits</a></li>
-                                    <li><a href="javascript:;">get started</a></li>
-                                </ul>
-                            </a></li>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <div class="col-md-4 col-sm-4 col-xs-12 text-right">
-                    
-                   
-                        <div class="navi">
-                            <ul>
-                                <li><a href="javascript:;">about us</a></li>
-                                <li><a href="javascript:;">admin </a></li>
-                                <li><a href="javascript:;">Sign in</a></li>
-                            </ul>
-                        </div>
-                    
-                </div>
-            </div>
-        </div>
-    </header>
-    
+{% include 'pages/partials/header.html' %}
 <section class="abt-sec1">
     <div class="container">
         <div class="abt-txt">
@@ -76,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="imabt"><img class="img-responsive" src="assets/images/ab-banner.jpg" alt=""> </div>
+    <div class="imabt"><img class="img-responsive" src="{% static "frontend/assets/images/ab-banner.jpg" %}" alt=""> </div>
 </section> <!-- About banner head End -->
 
 <div class="clear"></div>
@@ -106,7 +48,7 @@
 <i class="fa fa-star" aria-hidden="true"></i>
 </i> <p>Average Customer Rating</p></div>
 
-      
+
   </div>
 </section> <!-- Counter End -->
 
@@ -116,11 +58,11 @@
     <div class="container">
         <h3>Team</h3>
         <p>Lendy was founded by a well experienced team with a combined<br>experience of over 25 years in the financial services industry.</p>
-        
+
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="team">
-                    <img src="assets/images/team1.jpg" alt="">
+                    <img src="{% static "frontend/assets/images/team1.jpg" %}" alt="">
                     <h6>Alicia Goodwin</h6>
                     <p>CEO & Co-Founder</p>
                 </div>
@@ -128,7 +70,7 @@
 
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="team">
-                    <img src="assets/images/team2.jpg" alt="">
+                    <img src="{% static "frontend/assets/images/team2.jpg" %}" alt="">
                     <h6>James Paul</h6>
                     <p>CEO & Co-Founder</p>
                 </div>
@@ -136,7 +78,7 @@
 
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="team">
-                    <img src="assets/images/team3.jpg" alt="">
+                    <img src="{% static "frontend/assets/images/team3.jpg" %}" alt="">
                     <h6>Anna Winthrop</h6>
                     <p>COO</p>
                 </div>
@@ -144,7 +86,7 @@
 
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="team">
-                    <img src="assets/images/team4.jpg" alt="">
+                    <img src="{% static "frontend/assets/images/team4.jpg" %}" alt="">
                     <h6>Mikaela Jones</h6>
                     <p>Head of Legal</p>
                 </div>
@@ -152,7 +94,7 @@
 
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="team">
-                    <img src="assets/images/team5.jpg" alt="">
+                    <img src="{% static "frontend/assets/images/team5.jpg" %}" alt="">
                     <h6>Frank Wells</h6>
                     <p>Head of Marketing</p>
                 </div>
@@ -171,12 +113,12 @@
             <p>Lendy has been covered in by major news outlets and media companies</p>
             <div class="clientbx">
                 <ul>
-                    <li><img src="assets/images/reuters.svg" alt="">   </li>
-                    <li><img src="assets/images/bloomberg.svg" alt="">   </li>
-                    <li><img src="assets/images/npr.svg" alt="">   </li>
-                    <li><img src="assets/images/nbc.svg" alt="">   </li>
+                    <li><img src="{% static "frontend/assets/images/reuters.svg" %}" alt="">   </li>
+                    <li><img src="{% static "frontend/assets/images/bloomberg.svg" %}" alt="">   </li>
+                    <li><img src="{% static "frontend/assets/images/npr.svg" %}" alt="">   </li>
+                    <li><img src="{% static "frontend/assets/images/nbc.svg" %}" alt="">   </li>
                 </ul>
-            </div> 
+            </div>
         </div>
     </section><!-- client box end -->
 <div class="clear"></div>
@@ -214,84 +156,6 @@
     </div>
 </section> <!-- main news ENd -->
 
-<footer class="main-footer">
-    
-    <div class="container">
-        <div class="row">
-        <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="ft-lst">
-                <h5>borrow</h5>
-                <ul>
-                    <li><a href="javascript:;">How it Work</a></li>
-                    <li><a href="javascript:;">Loan Types</a></li>
-                    <li><a href="javascript:;">Check Your Rates</a></li>
+{% include 'pages/partials/footer.html' %}
 
-                </ul>
-            </div>
-            
-        </div>
-        <div class="col-md-2 col-sm-2 col-xs-12">
-            <div class="ft-lst">
-                <h5>invest</h5>
-                <ul>
-                    <li><a href="javascript:;">How it Work</a></li>
-                    <li><a href="javascript:;">Benefits</a></li>
-                    <li><a href="javascript:;">Get Started</a></li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-2 col-xs-12">
-            <div class="ft-lst">
-                <h5>company</h5>
-                <ul>
-                    <li><a href="javascript:;">About</a></li>
-                    <li><a href="javascript:;">Team</a></li>
-                    <li><a href="javascript:;">press</a></li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-5 col-sm-5 col-xs-12">
-            <div class="ft-abt">
-                <div class="ftloga"><img src="assets/images/ft-logo.svg" alt=""></div>
-                <p>Since 2009, we've helped 180 thousand people achieve<br> greater financial wellness, and that number is growing.</p>
-                <div class="social-bx">
-                    <ul>
-                        <li><a href="javascript:;"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="copyrit">
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <p>Copyright © 2009 - 2020 Lendy, Inc. All rights reserved.</p>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="trm-lst">
-                    <ul>
-                        <li><a href="javascript:;">Term of Use</a></li>
-                        <li><a href="javascript:;">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <p class="ft-para">
-         3.77% - 8.03% average historical returns for loan grades A through E originated from January 2010 through March 2017. Because the likelihood of a loan charging off increases over time, historical returns include only those loans that were issued 18 months or more before the last day of the most recently completed quarter. The range in returns represents 10th and 90th percentile performance as illustrated here, for the period January 2010 through September 2018. The return is weighted based on platform issuance by grade. Historical Returns are Lendy's adjusted net annualized returns ("ANAR"). ANAR is calculated using the formula described here.</p>
-    </div> <!-- container End -->
-
-
- <script type="text/javascript" src="assets/js/lib.js"></script> 
- <script type="text/javascript" src="assets/js/functions.js"></script>
- <script type="text/javascript" src="assets/js/wow.js"></script>
-</footer> <!-- footer End -->
-
-  </body>
-</html> 
+{% endblock %}

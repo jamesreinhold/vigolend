@@ -1,0 +1,50 @@
+{% load static %}
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="logo">
+                  <a href="{% url 'index' %}">
+                  <img src="{% static "frontend/assets/images/logo.svg" %}" alt="VigoLend Logo">
+                  </a>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="drplst">
+                    <ul>
+                        <li><a href="{% url 'borrow' %}">Borrow</a>
+                            <ul>
+                                <li><a href="#how-it-works">how it work</a></li>
+                                <li><a href="#">loan types</a></li>
+                                <li><a href="#">check your rate</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'invest' %}">Invest
+
+                            <ul>
+                                <li><a href="#how-it-works">how it work</a></li>
+                                <li><a href="#benefits">benefits</a></li>
+                                <li><a href="#">get started</a></li>
+                            </ul>
+                        </a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12 text-right">
+
+
+                    <div class="navi">
+                        <ul>
+                            <li><a href="{% url 'about_us' %}">about us</a></li>
+                            <li><a href="/admin">admin </a></li>
+                            <li><a href="/accounts/sign-in">Sign in</a></li>
+                        </ul>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</header>
