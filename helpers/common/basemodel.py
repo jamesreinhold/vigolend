@@ -13,13 +13,13 @@ class BaseModel(models.Model):
     )
     created_date = models.DateTimeField(
         verbose_name=_("Created Date"),
-        default=timezone.now(),
+        default=timezone.now,
         max_length=20,
         help_text=_("Timestamp when the record was created."))
 
     modified_date = models.DateTimeField(
         verbose_name=_("Modified Date"),
-        default=timezone.now(),
+        default=timezone.now,
         max_length=20,
         help_text=_("Timestamp when the record was modified."))
 

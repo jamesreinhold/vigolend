@@ -31,7 +31,7 @@ class TeamMember(BaseModel):
 
     photo = models.ImageField(
         verbose_name=_("Photo"),
-        upload_to='/team',
+        upload_to='team',
         help_text=_("The photo of the team member."))
 
     # Metadata
