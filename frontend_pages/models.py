@@ -1,8 +1,9 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from helpers.common.basemodel import BaseModel
 
 
-class TeamMember(models.Model):
+class TeamMember(BaseModel):
     """
     Entity represents a team member
     """
@@ -27,6 +28,11 @@ class TeamMember(models.Model):
         verbose_name=_("Twitter Handle"),
         max_length=50,
         help_text=_("Twitter handle- without `@`."))
+
+    photo = models.ImageField(
+        verbose_name=_("Photo"),
+        upload_to='/team',
+        help_text=_("The photo of the team member."))
 
     # Metadata
     class Meta:
