@@ -1,4 +1,5 @@
 import uuid
+from locations.models import Country
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -6,6 +7,65 @@ from django.db.models import CharField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+
+
+class UserAddress(models.Model):
+    id = models.UUIDField(
+        default=uuid.uuid4,
+        editable=False,
+        primary_key=True,
+        help_text=_("The unique identifier of the customer.")
+    )
+
+    user = models.ForeignKey(
+        'User',
+        verbose_name=_("User Profile"),
+        on_delete=models.PROTECT,
+        help_text=_("The user for whom address belongs to.")
+    )
+
+    address_line_1 = models.CharField(
+        max_length=50,
+        verbose_name=_("Address line 1"),
+        help_text=_('Address line 2 of the user'))
+
+    address_line_2 = models.CharField(
+        max_length=50,
+        verbose_name=_("Address line 2"),
+        blank=True, null=True,
+        help_text=_('Address line 2 of the user')
+    )
+
+    state = models.CharField(
+        max_length=50,
+        verbose_name=_("State or Region"),
+        help_text=_('Address line 2 of the user'))
+
+    city = models.CharField(
+        verbose_name=_("City"),
+        max_length=50,
+        help_text=_("The city of the address of the user."))
+
+    zip_post_code = models.CharField(
+        verbose_name=_("Zip Code"),
+        max_length=20,
+        help_text=_("The zip or Postal code of the address of the user."))
+
+    country = models.ForeignKey(
+        Country,
+        verbose_name=_("Country"),
+        on_delete=models.PROTECT,
+        help_text='Enter field documentation'
+    )
+
+    # Metadata
+    class Meta:
+        verbose_name = _("User Address")
+        verbose_name_plural = ("User Addresses")
+
+    # Methods
+    def __str__(self):
+        return self.field
 
 
 class UserManager(BaseUserManager):
@@ -40,6 +100,7 @@ class UserManager(BaseUserManager):
             raise ValueError(_('Superuser must have is_superuser=True.'))
 
         return self._create_user(email, password, **extra_fields)
+
 
 class User(AbstractUser):
     """Default user for VigoLend."""
@@ -89,17 +150,21 @@ class User(AbstractUser):
         help_text=_("The first names of the customer.")
     )
 
-    current_address = models.CharField(
-        max_length=255,
+    current_address = models.ForeignKey(
+        UserAddress,
+        on_delete=models.PROTECT,
         verbose_name=_("Current Address"),
         blank=True, null=True,
+        related_name='+',
         help_text=_("The current living address of the customer.")
     )
 
-    permanent_address = models.CharField(
-        max_length=255,
+    permanent_address = models.ForeignKey(
+        UserAddress,
+        on_delete=models.PROTECT,
         verbose_name=_("Permanent Address"),
         blank=True, null=True,
+        related_name='+',
         help_text=_("The permanent address of the customer.")
     )
 
@@ -147,7 +212,7 @@ class User(AbstractUser):
         verbose_name=_("Onboarding Complete Date"),
         blank=True, null=True,
         help_text=_("Timestamp when customer completed onboarding process.")
-        )
+    )
 
     kyc_submitted = models.BooleanField(
         verbose_name=_("KYC Submitted"),
@@ -159,13 +224,14 @@ class User(AbstractUser):
         max_length=50,
         blank=True, null=True,
         help_text=_("The social security number of the customer. This helps to determine the credit score and also validates the identity of the customer.")
-        )
+    )
 
     place_of_birth = models.CharField(
         max_length=150,
         verbose_name=_("Place of Birth"),
         blank=True, null=True,
-        help_text=_("The place of birth of the customer. This must match the place of birth as indicated in the customers photo Identitication.")
+        help_text=_(
+            "The place of birth of the customer. This must match the place of birth as indicated in the customers photo Identitication.")
     )
 
     verification_date = models.DateTimeField(
@@ -183,10 +249,11 @@ class User(AbstractUser):
         help_text=_("The IP address recorded at the time of registration.")
     )
 
-    country_of_residence = models.CharField(
-         max_length=150,
+    country_of_residence = models.ForeignKey(
+        Country,
         verbose_name=_("Country of Residence"),
         blank=True, null=True,
+        on_delete=models.SET_NULL,
         help_text=_("The country of residence of the customer. KYC Verification will be applied to this country and customer must provide proof of such residence as relevant in the country of jurisdiction.")
     )
 
@@ -198,7 +265,7 @@ class User(AbstractUser):
         help_text=_("The default currency of the borrower. Currency will be sent against borrowers country of residence.")
     )
 
-    job_title= models.CharField(
+    job_title = models.CharField(
         max_length=150,
         verbose_name=_("Job Title"),
         blank=True, null=True,
@@ -215,11 +282,9 @@ class User(AbstractUser):
     # escrow_account_number
     # tax_id
 
-
     class Meta:
         verbose_name = _("Register User")
         verbose_name_plural = _("Registered Users")
-
 
     def __str__(self):
         return self.email
