@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import TeamMember
+
 
 def index(request):
     """
@@ -9,6 +11,7 @@ def index(request):
         request, 'pages/home.html'
     )
 
+
 def borrow(request):
     """
     View function for rendering Borrower page
@@ -16,6 +19,7 @@ def borrow(request):
     return render(
         request, 'pages/borrow.html'
     )
+
 
 def invest(request):
     """
@@ -25,13 +29,19 @@ def invest(request):
         request, 'pages/invest.html'
     )
 
+
 def about_us(request):
     """
     View function for rendering about us page
     """
+    team_members = TeamMember.objects.all()
+
+    context = {'team_members': team_members}
+
     return render(
-        request, 'pages/about.html'
+        request, 'pages/about.html', context
     )
+
 
 def teams(request):
     """
