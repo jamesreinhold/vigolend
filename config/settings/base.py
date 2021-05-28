@@ -80,7 +80,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "vigolend.users.apps.UsersConfig",
-    "locations.apps.LocationsConfig"
+    "locations.apps.LocationsConfig",
+    "frontend_pages"
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
