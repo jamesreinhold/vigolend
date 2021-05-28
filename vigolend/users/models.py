@@ -128,12 +128,24 @@ class User(AbstractUser):
         ('cancelled', _('Cancelled')),
         ('rejected', _('Rejected/Refused'))
     )
+
+    ACCOUNT_TYPE = (
+        ('borrower', _('Borrower')),
+        ('investor', _('Investor'))
+    )
     #: First and last name do not cover name patterns around the globe
     id = models.UUIDField(
         default=uuid.uuid4,
         editable=False,
         primary_key=True,
         help_text=_("The unique identifier of the customer.")
+    )
+
+    account_type = CharField(
+        _("Account Tyoe"),
+        choices=ACCOUNT_TYPE,
+        max_length=8,
+        help_text=_("The account type of the user.")
     )
 
     name = CharField(_("Name of User"), blank=True, max_length=255)
