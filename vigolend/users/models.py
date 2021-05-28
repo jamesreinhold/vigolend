@@ -145,6 +145,8 @@ class User(AbstractUser):
         _("Account Tyoe"),
         choices=ACCOUNT_TYPE,
         max_length=8,
+        default='borrower',
+        blank=True, null=True,
         help_text=_("The account type of the user.")
     )
 
