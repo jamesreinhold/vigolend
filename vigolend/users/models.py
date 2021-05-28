@@ -10,11 +10,24 @@ from django.utils import timezone
 
 
 class UserAddress(models.Model):
+    # CHOICES
+    ADDRESS_TYPE = (
+        ('current', _('Current Address')),
+        ('permanent', _("Permanent Address"))
+    )
     id = models.UUIDField(
         default=uuid.uuid4,
         editable=False,
         primary_key=True,
         help_text=_("The unique identifier of the customer.")
+    )
+
+    type = models.CharField(
+        choices=ADDRESS_TYPE,
+        max_length=9,
+        help_text=_("The type of address."),
+        default='current',
+        verbose_name=_("Address Type")
     )
 
     user = models.ForeignKey(
@@ -65,7 +78,7 @@ class UserAddress(models.Model):
 
     # Methods
     def __str__(self):
-        return self.field
+        return self.user.first_name
 
 
 class UserManager(BaseUserManager):
