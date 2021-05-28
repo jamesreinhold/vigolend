@@ -11,8 +11,8 @@ User = get_user_model()
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'country_of_residence')
-    list_display_links = ('first_name', 'last_name', 'country_of_residence')
+    list_display = ('first_name', 'last_name', 'country_of_residence', 'account_type')
+    list_display_links = ('first_name', 'last_name', 'country_of_residence',  'account_type')
 
 
 @admin.register(UserAddress)

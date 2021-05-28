@@ -142,7 +142,7 @@ class User(AbstractUser):
     )
 
     account_type = CharField(
-        _("Account Tyoe"),
+        _("Account Type"),
         choices=ACCOUNT_TYPE,
         max_length=8,
         default='borrower',
